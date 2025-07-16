@@ -1,0 +1,53 @@
+/* Existing text styling (default to white for darker backgrounds, also used for 'none') */
+#nameBoardDisplay {
+    /* ... (existing styles) ... */
+    color: #fff; /* Default text color for contrast */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* For readability */
+}
+#nameBoardDisplay.marquee_logo { /* Corresponds to value="marquee_logo" in HTML */
+    background-image: url('images/marquee_logo.png'); /* Path to your actual image file */
+    /* No 'color' or 'text-shadow' needed here, it will inherit the default white text and shadow */
+}
+#nameBoardDisplay.blacklane_logo { /* Corresponds to value="blacklane_logo" in HTML */
+    background-image: url('images/blacklane_logo.png'); /* Path to your actual image file */
+    /* No 'color' or 'text-shadow' needed here, it will inherit the default white text and shadow */
+}
+#nameBoardDisplay.royale_logo { /* Corresponds to value="royale_logo" in HTML */
+    background-image: url('images/royale_logo.png'); /* Path to your actual image file */
+    /* No 'color' or 'text-shadow' needed here, it will inherit the default white text and shadow */
+}
+#nameBoardDisplay.dakota_logo { /* Corresponds to value="dakota_logo" in HTML */
+    background-image: url('images/dakota_logo.png'); /* Path to your actual image file */
+    /* No 'color' or 'text-shadow' needed here, it will inherit the default white text and shadow */
+}
+#nameBoardDisplay.black_ blank_logo { /* Corresponds to value="black_blank_logo" in HTML */
+    background-image: url('images/blackblank_logo.png'); /* Path to your actual image file */
+    /* No 'color' or 'text-shadow' needed here, it will inherit the default white text and shadow */
+}
+/* Specific text colors for light backgrounds */
+#nameBoardDisplay.tbr_logo { /* Corresponds to value="tbr_logo" in HTML */
+    background-image: url('images/tbr_logo.png'); /* Path to your actual image file */
+    color: #000; /* Black text for this logo (assuming it's light) */
+    text-shadow: none; /* Remove shadow if it looks bad on light */
+}
+#nameBoardDisplay.firstlight_logo { /* Corresponds to value="firstlight_logo" in HTML */
+    background-image: url('images/firstlight_logo.png'); /* Path to your actual image file */
+    color: #000; /* Black text for this logo (assuming it's light) */
+    text-shadow: none;
+}
+#nameBoardDisplay.viator_logo { /* Corresponds to value="viator_logo" in HTML */
+    background-image: url('images/viator_logo.png'); /* Path to your actual image file */
+    color: #000; /* Black text for this logo (assuming it's light) */
+    text-shadow: none;
+}
+#nameBoardDisplay.white_blank_logo { /* Corresponds to value="white_blank_logo" in HTML */
+    background-image: url('images/white_blank_logo.png'); /* Path to your actual image file */
+    color: #000; /* Black text for this logo (assuming it's light) */
+    text-shadow: none;
+}
+/* If no logo is selected, set a default background and text color */
+#nameBoardDisplay.none {
+    background-color: #000; /* Default black background */
+    color: #fff; /* White text on black */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
