@@ -45,6 +45,7 @@ html, body {
     cursor: pointer;
     transition: background 0.2s;
 }
+
 #controlsContainer button:hover {
     background: #444;
 }
