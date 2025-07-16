@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Nameboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -9,6 +10,7 @@
     <div id="controlsContainer">
         <label for="passengerName">Passenger Name:</label>
         <input id="passengerName" type="text" placeholder="Enter passenger name">
+
         <label for="flightDetails">Flight Details:</label>
         <input id="flightDetails" type="text" placeholder="Enter flight details">
 
@@ -20,18 +22,19 @@
             <option value="royale_logo">Royale Logo</option>
             <option value="dakota_logo">Dakota Logo</option>
             <option value="black_blank_logo">Black Blank Logo</option>
-            <option value="tbr_logo">TBR Logo</option>
             <option value="firstlight_logo">Firstlight Logo</option>
+            <option value="tbr_logo">TBR Logo</option>
             <option value="viator_logo">Viator Logo</option>
             <option value="white_blank_logo">White Blank Logo</option>
         </select>
-        <button onclick="showNameBoard()">Show Name Board</button>
+
+        <button id="showBoardBtn">Show Nameboard</button>
     </div>
 
     <div id="nameBoardDisplay" class="hidden">
         <div id="passengerNameDisplay"></div>
         <div id="flightDetailsDisplay"></div>
-        <button onclick="resetBoard()">Back</button>
+        <button id="backBtn">Back</button>
     </div>
 
     <script src="script.js"></script>
