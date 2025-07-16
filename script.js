@@ -5,6 +5,8 @@ const passengerNameDiv = document.getElementById('passengerNameDisplay');
 const flightDetailsDiv = document.getElementById('flightDetailsDisplay');
 const nameBoardDisplay = document.getElementById('nameBoardDisplay');
 const controlsContainer = document.getElementById('controlsContainer');
+const showBoardBtn = document.getElementById('showBoardBtn');
+const backBtn = document.getElementById('backBtn'); // If you keep the back button
 
 function showNameBoard() {
     const name = passengerNameInput.value.trim();
@@ -60,4 +62,10 @@ function resetBoard() {
     backgroundSelect.value = 'none';
     nameBoardDisplay.classList.add('hidden');
     controlsContainer.classList.remove('hidden');
+}
+
+// Add event listeners for buttons
+showBoardBtn.addEventListener('click', showNameBoard);
+if (backBtn) {
+    backBtn.addEventListener('click', resetBoard);
 }
