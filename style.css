@@ -116,35 +116,3 @@ body {
     background-image: url('Images/dakota_logo.png');
 }
 #nameBoardDisplay.black_blank_logo {
-    background-image: url('Images/black_blank_logo.png');
-}
-
-/* Light logo backgrounds need dark text */
-#nameBoardDisplay.tbr_logo {
-    background-image: url('Images/tbr_logo.png');
-    color: #111;
-    text-shadow: none;
-}
-#nameBoardDisplay.firstlight_logo {
-    background-image: url('Images/firstlight_logo.png');
-    color: #111;
-    text-shadow: none;
-}
-#nameBoardDisplay.viator_logo {
-    background-image: url('Images/viator_logo.png');
-    color: #111;
-    text-shadow: none;
-}
-#nameBoardDisplay.white_blank_logo {
-    background-image: url('Images/white_blank_logo.png');
-    color: #111;
-    text-shadow: none;
-}
-
-/* No logo: solid black background, white text */
-#nameBoardDisplay.none {
-    background-image: none;
-    background-color: #000;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-}
