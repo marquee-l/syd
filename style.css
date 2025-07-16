@@ -1,14 +1,108 @@
-/* Existing text styling (default to white for darker backgrounds, also used for 'none') */
-#nameBoardDisplay {
-    /* ... (existing styles) ... */
-    color: #fff; /* Default text color for contrast */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* For readability */
-}
-#nameBoardDisplay {
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
 }
 
+#controlsContainer {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#controlsContainer label,
+#controlsContainer input,
+#controlsContainer select,
+#controlsContainer button {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+#controlsContainer input,
+#controlsContainer select {
+    padding: 8px;
+    font-size: 1em;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+}
+
+#controlsContainer button {
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#controlsContainer button:hover {
+    background: #444;
+}
+
+/* Hide elements with the hidden class */
+.hidden {
+    display: none !important;
+}
+
+#nameBoardDisplay {
+    max-width: 600px;
+    height: 220px;
+    margin: 60px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    font-size: 2em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    padding: 28px 20px;
+    box-sizing: border-box;
+}
+
+#passengerNameDisplay {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+}
+
+#flightDetailsDisplay {
+    font-size: 1.1em;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+#nameBoardDisplay button {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 18px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+#nameBoardDisplay button:hover {
+    background: rgba(0,0,0,0.85);
+}
+
+/* Logo backgrounds - paths must match Images/ folder and file names exactly */
 #nameBoardDisplay.marquee_logo {
     background-image: url('Images/marquee_logo.png');
 }
@@ -24,35 +118,33 @@
 #nameBoardDisplay.black_blank_logo {
     background-image: url('Images/black_blank_logo.png');
 }
-/* Specific text colors for light backgrounds */
+
+/* Light logo backgrounds need dark text */
 #nameBoardDisplay.tbr_logo {
     background-image: url('Images/tbr_logo.png');
-    color: #000;
+    color: #111;
     text-shadow: none;
 }
 #nameBoardDisplay.firstlight_logo {
     background-image: url('Images/firstlight_logo.png');
-    color: #000;
+    color: #111;
     text-shadow: none;
 }
 #nameBoardDisplay.viator_logo {
     background-image: url('Images/viator_logo.png');
-    color: #000;
+    color: #111;
     text-shadow: none;
 }
 #nameBoardDisplay.white_blank_logo {
     background-image: url('Images/white_blank_logo.png');
-    color: #000;
+    color: #111;
     text-shadow: none;
 }
+
+/* No logo: solid black background, white text */
 #nameBoardDisplay.none {
+    background-image: none;
     background-color: #000;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-/* If no logo is selected, set a default background and text color */
-#nameBoardDisplay.none {
-    background-color: #000; /* Default black background */
-    color: #fff; /* White text on black */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
