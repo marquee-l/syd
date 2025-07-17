@@ -4,74 +4,95 @@
   <meta charset="UTF-8">
   <title>Nameboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- You can add your CSS file here -->
   <style>
-    body {
-      background: #fff;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
-    }
-    #nameboard-container {
-      text-align: center;
-      margin-top: 50px;
-    }
-    .logo {
-      margin-bottom: 30px;
-    }
-    .nameboard-text {
-      font-size: 3em;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 20px;
-      background: none;
-      box-shadow: none;
-      padding: 20px;
-      border-radius: 8px;
-      display: inline-block;
-    }
-    .nameboard-info {
-      font-size: 2em;
-      color: #000;
-      background: none;
-      box-shadow: none;
-      padding: 10px;
-      border-radius: 6px;
-      display: inline-block;
-    }
+    body { background: #fff; margin: 0; font-family: Arial, sans-serif; }
+    #nameboard-container { text-align: center; margin-top: 50px; }
+    .logo { margin-bottom: 30px; }
+    .nameboard-text { font-size: 3em; font-weight: bold; color: #000; margin-bottom: 20px; }
+    .nameboard-info { font-size: 2em; color: #000; margin-bottom: 20px; }
     #showNameboardBtn, #exitFullscreenBtn {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      padding: 20px 32px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 8px;
-      background: #222;
-      color: #fff;
-      cursor: pointer;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: background 0.2s;
+      position: fixed; bottom: 40px; right: 40px;
+      padding: 20px 32px; font-size: 1.2em; border: none; border-radius: 8px;
+      background: #222; color: #fff; cursor: pointer; z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: background 0.2s;
     }
-    #showNameboardBtn:hover, #exitFullscreenBtn:hover {
-      background: #444;
-    }
-    #exitFullscreenBtn {
-      display: none;
-      background: #a00;
-    }
+    #showNameboardBtn:hover, #exitFullscreenBtn:hover { background: #444; }
+    #exitFullscreenBtn { display: none; background: #a00; }
+    #input-form { display: block; text-align: center; margin-top: 50px; }
+    #input-form input { font-size: 1.2em; margin: 5px; padding: 10px; }
+    #input-form button { font-size: 1.2em; padding: 10px 20px; }
   </style>
 </head>
 <body>
-  <div id="nameboard-container">
+  <form id="input-form">
+    <input id="nameInput" type="text" placeholder="Enter name" required>
+    <input id="infoInput" type="text" placeholder="Enter info" required>
+    <button type="submit">Update Nameboard</button>
+  </form>
+  <div id="nameboard-container" style="display:none;">
     <img src="logo.png" alt="Logo" class="logo" width="250" height="80">
-    <div class="nameboard-text">TONY ISABELLA</div>
-    <div class="nameboard-info">EK 412</div>
+    <div class="nameboard-text" id="nameDisplay"></div>
+    <div class="nameboard-info" id="infoDisplay"></div>
   </div>
   <button id="showNameboardBtn">Show Nameboard</button>
   <button id="exitFullscreenBtn">Exit Fullscreen</button>
 
-  <script src="fullscreen.js"></script>
+  <script>
+    // Fullscreen logic
+    function goFullScreen() {
+      const element = document.documentElement;
+      if (element.requestFullscreen) element.requestFullscreen();
+      else if (element.mozRequestFullScreen) element.mozRequestFullScreen();
+      else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
+      else if (element.msRequestFullscreen) element.msRequestFullscreen();
+    }
+    function exitFullScreen() {
+      if (document.exitFullscreen) document.exitFullscreen();
+      else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      else if (document.msExitFullscreen) document.msExitFullscreen();
+    }
+    function handleFullscreenChange() {
+      var exitBtn = document.getElementById('exitFullscreenBtn');
+      if (exitBtn) {
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+          exitBtn.style.display = 'block';
+        } else {
+          exitBtn.style.display = 'none';
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var showBtn = document.getElementById('showNameboardBtn');
+      if (showBtn) {
+        showBtn.addEventListener('click', function() {
+          goFullScreen();
+          document.getElementById('input-form').style.display = 'block';
+          document.getElementById('nameboard-container').style.display = 'none';
+        });
+      }
+      var exitBtn = document.getElementById('exitFullscreenBtn');
+      if (exitBtn) {
+        exitBtn.addEventListener('click', exitFullScreen);
+        exitBtn.style.display = 'none';
+      }
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
+      document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+      // Form logic
+      var form = document.getElementById('input-form');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('nameInput').value;
+        var info = document.getElementById('infoInput').value;
+        document.getElementById('nameDisplay').textContent = name;
+        document.getElementById('infoDisplay').textContent = info;
+        form.style.display = 'none';
+        document.getElementById('nameboard-container').style.display = 'block';
+      });
+    });
+  </script>
 </body>
 </html>
