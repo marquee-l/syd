@@ -56,6 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set text color based on background logo
     let blackLogos = [
+      "Images/black_blank_logo.png",
+      "Images/blacklane_logo.png",
       "Images/marquee_logo.png",
       "Images/royale_logo.png",
       "Images/dakota_logo.png"
@@ -63,7 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let whiteLogos = [
       "Images/firstlight_logo.png",
       "Images/tbr_logo.png",
-      "Images/viator_logo.png"
+      "Images/viator_logo.png",
+      "Images/white_blank_logo.png"
     ];
     if (blackLogos.includes(selectedLogo)) {
       nameDisplay.style.color = "#fff";
