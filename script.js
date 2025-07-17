@@ -9,7 +9,6 @@ function goFullScreen() {
 // Reliable mobile viewport fix for Android/Chrome browsers
 function setNameboardHeight() {
   var nameboard = document.getElementById('nameboard-container');
-  // Use 100dvh if supported, else fallback to window.innerHeight
   if (window.CSS && CSS.supports("height", "100dvh")) {
     nameboard.style.height = "100dvh";
   } else {
