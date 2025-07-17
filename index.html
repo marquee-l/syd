@@ -4,124 +4,32 @@
   <meta charset="UTF-8">
   <title>Nameboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { background: #fff; margin: 0; font-family: Arial, sans-serif; }
-    #nameboard-container { text-align: center; margin-top: 50px; }
-    .logo { margin-bottom: 30px; }
-    .nameboard-text { font-size: 3em; font-weight: bold; color: #000; margin-bottom: 20px; }
-    .nameboard-info { font-size: 2em; color: #000; margin-bottom: 20px; }
-    #showNameboardBtn, #exitFullscreenBtn {
-      position: fixed; bottom: 40px; right: 40px;
-      padding: 20px 32px; font-size: 1.2em; border: none; border-radius: 8px;
-      background: #222; color: #fff; cursor: pointer; z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: background 0.2s;
-    }
-    #showNameboardBtn:hover, #exitFullscreenBtn:hover { background: #444; }
-    #exitFullscreenBtn { display: none; background: #a00; }
-    #input-form { display: block; text-align: center; margin-top: 50px; }
-    #input-form input { font-size: 1.2em; margin: 5px; padding: 10px; }
-    #input-form button { font-size: 1.2em; padding: 10px 20px; }
-    @media (max-width: 600px) {
-      .nameboard-text { font-size: 2em; }
-      .nameboard-info { font-size: 1.2em; }
-      #input-form input, #input-form button { font-size: 1em; padding: 8px; }
-      #showNameboardBtn, #exitFullscreenBtn { padding: 10px 18px; font-size: 1em; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <form id="input-form">
-    <input id="nameInput" type="text" placeholder="Enter name" required>
-    <input id="infoInput" type="text" placeholder="Enter info" required>
-    <button id="updateNameboardBtn" type="button">Update Nameboard</button>
+    <input id="nameInput" type="text" placeholder="Enter Name" required>
+    <input id="infoInput" type="text" placeholder="Flight Info" required>
+    <select id="logoSelect">
+      <option value="none">No Logo/Background</option>
+      <option value="Images/black_blank_logo.png">Black Blank Logo</option>
+      <option value="Images/blacklane_logo.png">Blacklane Logo</option>
+      <option value="Images/dakota_logo.png">Dakota Logo</option>
+      <option value="Images/firstlight_logo.png">Firstlight Logo</option>
+      <option value="Images/marquee_logo.png">Marquee Logo</option>
+      <option value="Images/royale_logo.png">Royale Logo</option>
+      <option value="Images/tbr_logo.png">TBR Logo</option>
+      <option value="Images/viator_logo.png">Viator Logo</option>
+      <option value="Images/white_blank_logo.png">White Blank Logo</option>
+    </select>
     <button id="showNameboardBtn" type="button">Show Nameboard</button>
   </form>
   <div id="nameboard-container" style="display:none;">
-    <img src="logo.png" alt="Logo" class="logo" width="250" height="80">
+    <img id="logoImage" class="logo" style="display:none;" alt="Logo">
     <div class="nameboard-text" id="nameDisplay"></div>
     <div class="nameboard-info" id="infoDisplay"></div>
   </div>
   <button id="exitFullscreenBtn">Exit Fullscreen</button>
-
-  <script>
-    // Fullscreen logic
-    function goFullScreen() {
-      const element = document.documentElement;
-      if (element.requestFullscreen) element.requestFullscreen();
-      else if (element.mozRequestFullScreen) element.mozRequestFullScreen();
-      else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
-      else if (element.msRequestFullscreen) element.msRequestFullscreen();
-    }
-    function exitFullScreen() {
-      if (document.exitFullscreen) document.exitFullscreen();
-      else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-      else if (document.msExitFullscreen) document.msExitFullscreen();
-    }
-    function handleFullscreenChange() {
-      var exitBtn = document.getElementById('exitFullscreenBtn');
-      if (exitBtn) {
-        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-          exitBtn.style.display = 'block';
-        } else {
-          exitBtn.style.display = 'none';
-        }
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      var showBtn = document.getElementById('showNameboardBtn');
-      var exitBtn = document.getElementById('exitFullscreenBtn');
-      var updateBtn = document.getElementById('updateNameboardBtn');
-      var form = document.getElementById('input-form');
-      var nameboard = document.getElementById('nameboard-container');
-      var nameInput = document.getElementById('nameInput');
-      var infoInput = document.getElementById('infoInput');
-      var nameDisplay = document.getElementById('nameDisplay');
-      var infoDisplay = document.getElementById('infoDisplay');
-
-      // Show Nameboard button
-      showBtn.addEventListener('click', function() {
-        // Update display values
-        nameDisplay.textContent = nameInput.value;
-        infoDisplay.textContent = infoInput.value;
-        // Hide form, show nameboard
-        form.style.display = 'none';
-        nameboard.style.display = 'block';
-        // Go fullscreen
-        goFullScreen();
-      });
-
-      // Update Nameboard button
-      updateBtn.addEventListener('click', function() {
-        nameDisplay.textContent = nameInput.value;
-        infoDisplay.textContent = infoInput.value;
-        // Hide form, show nameboard (but not fullscreen)
-        form.style.display = 'none';
-        nameboard.style.display = 'block';
-      });
-
-      // Exit Fullscreen button
-      exitBtn.addEventListener('click', function() {
-        exitFullScreen();
-      });
-
-      // Show exit button only in fullscreen
-      document.addEventListener('fullscreenchange', handleFullscreenChange);
-      document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-      document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-      document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-
-      // Allow to go back to input form by clicking anywhere on the board (when not fullscreen)
-      nameboard.addEventListener('click', function() {
-        if (!document.fullscreenElement && !document.webkitFullscreenElement &&
-            !document.mozFullScreenElement && !document.msFullscreenElement) {
-          nameboard.style.display = 'none';
-          form.style.display = 'block';
-        }
-      });
-
-      // No default values set here, so fields are blank on load
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
