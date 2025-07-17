@@ -3,7 +3,8 @@ body { background: #fff; margin: 0; font-family: Arial, sans-serif; }
   text-align: center;
   margin-top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* fallback for desktop */
+  min-height: 100svh; /* modern mobile viewport units */
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -16,21 +17,39 @@ body { background: #fff; margin: 0; font-family: Arial, sans-serif; }
   font-size: 8vw;
   font-weight: bold;
   margin-bottom: 2vw;
-  /* color is set dynamically via JS */
 }
 .nameboard-info {
   font-size: 5vw;
   margin-bottom: 2vw;
-  /* color is set dynamically via JS */
 }
-#showNameboardBtn, #exitFullscreenBtn {
+#showNameboardBtn {
   position: fixed; bottom: 40px; right: 40px;
   padding: 20px 32px; font-size: 1.2em; border: none; border-radius: 8px;
   background: #222; color: #fff; cursor: pointer; z-index: 1000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15); transition: background 0.2s;
 }
-#showNameboardBtn:hover, #exitFullscreenBtn:hover { background: #444; }
-#exitFullscreenBtn { display: none; background: #a00; }
+#showNameboardBtn:hover { background: #444; }
+#exitFullscreenBtn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  padding: 7px 15px;
+  font-size: 0.95em;
+  border: none;
+  border-radius: 6px;
+  background: rgba(160,0,0,0.5);
+  color: #eee;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: none;
+  opacity: 0.35;
+  transition: opacity 0.3s, background 0.3s;
+  display: none;
+}
+#exitFullscreenBtn:hover {
+  opacity: 1;
+  background: #a00;
+}
 #input-form { display: block; text-align: center; margin-top: 50px; }
 #input-form input, #input-form select { font-size: 1.2em; margin: 5px; padding: 10px; }
 #input-form button { font-size: 1.2em; padding: 10px 20px; }
