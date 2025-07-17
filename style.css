@@ -13,14 +13,14 @@ body { background: #fff; margin: 0; font-family: Arial, sans-serif; }
   background-repeat: no-repeat;
 }
 .nameboard-text {
-  font-size: 3em;
+  font-size: 8vw;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 2vw;
   /* color is set dynamically via JS */
 }
 .nameboard-info {
-  font-size: 2em;
-  margin-bottom: 20px;
+  font-size: 5vw;
+  margin-bottom: 2vw;
   /* color is set dynamically via JS */
 }
 #showNameboardBtn, #exitFullscreenBtn {
@@ -35,8 +35,8 @@ body { background: #fff; margin: 0; font-family: Arial, sans-serif; }
 #input-form input, #input-form select { font-size: 1.2em; margin: 5px; padding: 10px; }
 #input-form button { font-size: 1.2em; padding: 10px 20px; }
 @media (max-width: 600px) {
-  .nameboard-text { font-size: 2em; }
-  .nameboard-info { font-size: 1.2em; }
+  .nameboard-text { font-size: 12vw; }
+  .nameboard-info { font-size: 8vw; }
   #input-form input, #input-form select, #input-form button { font-size: 1em; padding: 8px; }
   #showNameboardBtn, #exitFullscreenBtn { padding: 10px 18px; font-size: 1em; }
 }
