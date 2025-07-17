@@ -6,10 +6,15 @@ function goFullScreen() {
   else if (element.msRequestFullscreen) element.msRequestFullscreen();
 }
 
-// Ensures the nameboard fills the actual visible viewport on all devices
+// Reliable mobile viewport fix for Android/Chrome browsers
 function setNameboardHeight() {
   var nameboard = document.getElementById('nameboard-container');
-  nameboard.style.height = window.innerHeight + 'px';
+  // Use 100dvh if supported, else fallback to window.innerHeight
+  if (window.CSS && CSS.supports("height", "100dvh")) {
+    nameboard.style.height = "100dvh";
+  } else {
+    nameboard.style.height = window.innerHeight + 'px';
+  }
 }
 window.addEventListener('resize', setNameboardHeight);
 
