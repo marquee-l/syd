@@ -37,26 +37,49 @@ document.addEventListener('DOMContentLoaded', function() {
   var nameDisplay = document.getElementById('nameDisplay');
   var infoDisplay = document.getElementById('infoDisplay');
   var logoSelect = document.getElementById('logoSelect');
-  var logoImage = document.getElementById('logoImage');
 
   showBtn.addEventListener('click', function () {
-    // Update display values
     nameDisplay.textContent = nameInput.value;
     infoDisplay.textContent = infoInput.value;
-
-    // Handle logo/background selection
     var selectedLogo = logoSelect.value;
+
+    // Set background image
     if (selectedLogo !== "none") {
-      logoImage.src = selectedLogo;
-      logoImage.style.display = "block";
+      nameboard.style.backgroundImage = 'url(' + selectedLogo + ')';
+      nameboard.style.backgroundSize = 'cover';
+      nameboard.style.backgroundPosition = 'center';
+      nameboard.style.backgroundRepeat = 'no-repeat';
     } else {
-      logoImage.src = "";
-      logoImage.style.display = "none";
+      nameboard.style.backgroundImage = '';
+      nameboard.style.backgroundColor = '#fff';
+    }
+
+    // Set text color based on background logo
+    let blackLogos = [
+      "Images/marquee_logo.png",
+      "Images/royale_logo.png",
+      "Images/dakota_logo.png"
+    ];
+    let whiteLogos = [
+      "Images/firstlight_logo.png",
+      "Images/tbr_logo.png",
+      "Images/viator_logo.png"
+    ];
+    if (blackLogos.includes(selectedLogo)) {
+      nameDisplay.style.color = "#fff";
+      infoDisplay.style.color = "#fff";
+    } else if (whiteLogos.includes(selectedLogo)) {
+      nameDisplay.style.color = "#000";
+      infoDisplay.style.color = "#000";
+    } else {
+      // Default for blank/no logo, fallback to black text
+      nameDisplay.style.color = "#000";
+      infoDisplay.style.color = "#000";
     }
 
     // Hide form, show nameboard
     form.style.display = 'none';
-    nameboard.style.display = 'block';
+    nameboard.style.display = 'flex';
 
     // Go fullscreen
     goFullScreen();
@@ -81,6 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ) {
       nameboard.style.display = 'none';
       form.style.display = 'block';
+      // Clear background image and reset color for next time
+      nameboard.style.backgroundImage = '';
+      nameboard.style.backgroundColor = '#fff';
+      nameDisplay.style.color = "#000";
+      infoDisplay.style.color = "#000";
     }
   });
 });
