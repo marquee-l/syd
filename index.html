@@ -1,43 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nameboard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Nameboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- You can add your CSS file here -->
+  <style>
+    body {
+      background: #fff;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    #nameboard-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .logo {
+      margin-bottom: 30px;
+    }
+    .nameboard-text {
+      font-size: 3em;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 20px;
+      background: none;
+      box-shadow: none;
+      padding: 20px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .nameboard-info {
+      font-size: 2em;
+      color: #000;
+      background: none;
+      box-shadow: none;
+      padding: 10px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    #showNameboardBtn, #exitFullscreenBtn {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      padding: 20px 32px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.2s;
+    }
+    #showNameboardBtn:hover, #exitFullscreenBtn:hover {
+      background: #444;
+    }
+    #exitFullscreenBtn {
+      display: none;
+      background: #a00;
+    }
+  </style>
 </head>
 <body>
-    <div id="controlsContainer">
-        <label for="passengerName">Passenger Name:</label>
-        <input id="passengerName" type="text" placeholder="Enter passenger name">
+  <div id="nameboard-container">
+    <img src="logo.png" alt="Logo" class="logo" width="250" height="80">
+    <div class="nameboard-text">TONY ISABELLA</div>
+    <div class="nameboard-info">EK 412</div>
+  </div>
+  <button id="showNameboardBtn">Show Nameboard</button>
+  <button id="exitFullscreenBtn">Exit Fullscreen</button>
 
-        <label for="flightDetails">Flight Details:</label>
-        <input id="flightDetails" type="text" placeholder="Enter flight details">
-
-        <label for="backgroundSelect">Choose Company Logo:</label>
-        <select id="backgroundSelect">
-            <option value="none">No Logo</option>
-            <option value="marquee_logo">Marquee Logo</option>
-            <option value="blacklane_logo">Blacklane Logo</option>
-            <option value="royale_logo">Royale Logo</option>
-            <option value="dakota_logo">Dakota Logo</option>
-            <option value="black_blank_logo">Black Blank Logo</option>
-            <option value="firstlight_logo">Firstlight Logo</option>
-            <option value="tbr_logo">TBR Logo</option>
-            <option value="viator_logo">Viator Logo</option>
-            <option value="white_blank_logo">White Blank Logo</option>
-        </select>
-
-        <button id="showBoardBtn">Show Nameboard</button>
-    </div>
-
-    <div id="nameBoardDisplay" class="hidden">
-        <div id="passengerNameDisplay"></div>
-        <div id="flightDetailsDisplay"></div>
-        <button id="backBtn">Back</button>
-        <!-- To remove the back button for a pure full-screen logo, delete the above line -->
-    </div>
-
-    <script src="script.js"></script>
+  <script src="fullscreen.js"></script>
 </body>
 </html>
