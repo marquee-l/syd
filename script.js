@@ -5,6 +5,14 @@ function goFullScreen() {
   else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
   else if (element.msRequestFullscreen) element.msRequestFullscreen();
 }
+
+// Ensures the nameboard fills the actual visible viewport on all devices
+function setNameboardHeight() {
+  var nameboard = document.getElementById('nameboard-container');
+  nameboard.style.height = window.innerHeight + 'px';
+}
+window.addEventListener('resize', setNameboardHeight);
+
 function exitFullScreen() {
   if (document.exitFullscreen) document.exitFullscreen();
   else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
@@ -38,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var infoDisplay = document.getElementById('infoDisplay');
   var logoSelect = document.getElementById('logoSelect');
 
+  setNameboardHeight(); // set initial height
+
   showBtn.addEventListener('click', function () {
     nameDisplay.textContent = nameInput.value;
     infoDisplay.textContent = infoInput.value;
@@ -56,11 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set text color based on background logo
     let blackLogos = [
-      "Images/black_blank_logo.png",
-      "Images/blacklane_logo.png",
       "Images/marquee_logo.png",
+      "Images/blacklane_logo.png",
       "Images/royale_logo.png",
-      "Images/dakota_logo.png"
+      "Images/dakota_logo.png",
+      "Images/black_blank_logo.png"
     ];
     let whiteLogos = [
       "Images/firstlight_logo.png",
@@ -75,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
       nameDisplay.style.color = "#000";
       infoDisplay.style.color = "#000";
     } else {
-      // Default for blank/no logo, fallback to black text
       nameDisplay.style.color = "#000";
       infoDisplay.style.color = "#000";
     }
@@ -83,8 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide form, show nameboard
     form.style.display = 'none';
     nameboard.style.display = 'flex';
-
-    // Go fullscreen
+    setNameboardHeight();
     goFullScreen();
   });
 
@@ -107,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
     ) {
       nameboard.style.display = 'none';
       form.style.display = 'block';
-      // Clear background image and reset color for next time
       nameboard.style.backgroundImage = '';
       nameboard.style.backgroundColor = '#fff';
       nameDisplay.style.color = "#000";
       infoDisplay.style.color = "#000";
+      setNameboardHeight();
     }
   });
 });
