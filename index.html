@@ -21,7 +21,6 @@
     #input-form { display: block; text-align: center; margin-top: 50px; }
     #input-form input { font-size: 1.2em; margin: 5px; padding: 10px; }
     #input-form button { font-size: 1.2em; padding: 10px 20px; }
-    /* Responsive adjustments */
     @media (max-width: 600px) {
       .nameboard-text { font-size: 2em; }
       .nameboard-info { font-size: 1.2em; }
@@ -121,11 +120,7 @@
         }
       });
 
-      // Optionally, set default values
-      nameInput.value = "Tony Isabella";
-      infoInput.value = "EK412";
-      nameDisplay.textContent = nameInput.value;
-      infoDisplay.textContent = infoInput.value;
+      // No default values set here, so fields are blank on load
     });
   </script>
 </body>
