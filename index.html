@@ -21,20 +21,27 @@
     #input-form { display: block; text-align: center; margin-top: 50px; }
     #input-form input { font-size: 1.2em; margin: 5px; padding: 10px; }
     #input-form button { font-size: 1.2em; padding: 10px 20px; }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .nameboard-text { font-size: 2em; }
+      .nameboard-info { font-size: 1.2em; }
+      #input-form input, #input-form button { font-size: 1em; padding: 8px; }
+      #showNameboardBtn, #exitFullscreenBtn { padding: 10px 18px; font-size: 1em; }
+    }
   </style>
 </head>
 <body>
   <form id="input-form">
     <input id="nameInput" type="text" placeholder="Enter name" required>
     <input id="infoInput" type="text" placeholder="Enter info" required>
-    <button type="submit">Update Nameboard</button>
+    <button id="updateNameboardBtn" type="button">Update Nameboard</button>
+    <button id="showNameboardBtn" type="button">Show Nameboard</button>
   </form>
   <div id="nameboard-container" style="display:none;">
     <img src="logo.png" alt="Logo" class="logo" width="250" height="80">
     <div class="nameboard-text" id="nameDisplay"></div>
     <div class="nameboard-info" id="infoDisplay"></div>
   </div>
-  <button id="showNameboardBtn">Show Nameboard</button>
   <button id="exitFullscreenBtn">Exit Fullscreen</button>
 
   <script>
@@ -64,34 +71,61 @@
     }
     document.addEventListener('DOMContentLoaded', function() {
       var showBtn = document.getElementById('showNameboardBtn');
-      if (showBtn) {
-        showBtn.addEventListener('click', function() {
-          goFullScreen();
-          document.getElementById('input-form').style.display = 'block';
-          document.getElementById('nameboard-container').style.display = 'none';
-        });
-      }
       var exitBtn = document.getElementById('exitFullscreenBtn');
-      if (exitBtn) {
-        exitBtn.addEventListener('click', exitFullScreen);
-        exitBtn.style.display = 'none';
-      }
+      var updateBtn = document.getElementById('updateNameboardBtn');
+      var form = document.getElementById('input-form');
+      var nameboard = document.getElementById('nameboard-container');
+      var nameInput = document.getElementById('nameInput');
+      var infoInput = document.getElementById('infoInput');
+      var nameDisplay = document.getElementById('nameDisplay');
+      var infoDisplay = document.getElementById('infoDisplay');
+
+      // Show Nameboard button
+      showBtn.addEventListener('click', function() {
+        // Update display values
+        nameDisplay.textContent = nameInput.value;
+        infoDisplay.textContent = infoInput.value;
+        // Hide form, show nameboard
+        form.style.display = 'none';
+        nameboard.style.display = 'block';
+        // Go fullscreen
+        goFullScreen();
+      });
+
+      // Update Nameboard button
+      updateBtn.addEventListener('click', function() {
+        nameDisplay.textContent = nameInput.value;
+        infoDisplay.textContent = infoInput.value;
+        // Hide form, show nameboard (but not fullscreen)
+        form.style.display = 'none';
+        nameboard.style.display = 'block';
+      });
+
+      // Exit Fullscreen button
+      exitBtn.addEventListener('click', function() {
+        exitFullScreen();
+      });
+
+      // Show exit button only in fullscreen
       document.addEventListener('fullscreenchange', handleFullscreenChange);
       document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
       document.addEventListener('mozfullscreenchange', handleFullscreenChange);
       document.addEventListener('MSFullscreenChange', handleFullscreenChange);
 
-      // Form logic
-      var form = document.getElementById('input-form');
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var name = document.getElementById('nameInput').value;
-        var info = document.getElementById('infoInput').value;
-        document.getElementById('nameDisplay').textContent = name;
-        document.getElementById('infoDisplay').textContent = info;
-        form.style.display = 'none';
-        document.getElementById('nameboard-container').style.display = 'block';
+      // Allow to go back to input form by clicking anywhere on the board (when not fullscreen)
+      nameboard.addEventListener('click', function() {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement &&
+            !document.mozFullScreenElement && !document.msFullscreenElement) {
+          nameboard.style.display = 'none';
+          form.style.display = 'block';
+        }
       });
+
+      // Optionally, set default values
+      nameInput.value = "Tony Isabella";
+      infoInput.value = "EK412";
+      nameDisplay.textContent = nameInput.value;
+      infoDisplay.textContent = infoInput.value;
     });
   </script>
 </body>
