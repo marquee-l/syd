@@ -1,129 +1,123 @@
-function goFullScreen() {
-  const element = document.documentElement;
-  if (element.requestFullscreen) element.requestFullscreen();
-  else if (element.mozRequestFullScreen) element.mozRequestFullScreen();
-  else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen();
-  else if (element.msRequestFullscreen) element.msRequestFullscreen();
-}
+const nameInput = document.getElementById("nameInput");
+const flightInput = document.getElementById("flightInput");
+const logoSelect = document.getElementById("logoSelect");
+const showBtn = document.getElementById("showBtn");
+const nameboard = document.getElementById("nameboard");
+const displayName = document.getElementById("displayName");
+const displayFlight = document.getElementById("displayFlight");
+const logoBackground = document.getElementById("logoBackground");
+const backBtn = document.getElementById("backBtn");
+const formContainer = document.querySelector(".form-container");
+const formMessages = document.getElementById("form-messages");
+const displayMessage = document.getElementById("displayMessage");
 
-// Reliable mobile viewport fix for Android/Chrome browsers
-function setNameboardHeight() {
-  var nameboard = document.getElementById('nameboard-container');
-  if (window.CSS && CSS.supports("height", "100dvh")) {
-    nameboard.style.height = "100dvh";
-  } else {
-    nameboard.style.height = window.innerHeight + 'px';
+logoSelect.value = "marquee_logo.png";
+
+let lastName = "";
+let lastFlight = "";
+let lastLogo = "marquee_logo.png";
+
+showBtn.addEventListener("click", function () {
+  formMessages.textContent = ""; // Clear previous messages
+  displayMessage.textContent = ""; // Clear previous display messages
+  const name = nameInput.value.trim();
+  const flight = flightInput.value.trim();
+  const logo = logoSelect.value;
+
+  // Validation with user feedback
+  if (!name) {
+    formMessages.textContent = "Please enter a Name.";
+    formMessages.className = "error";
+    return;
   }
-}
-window.addEventListener('resize', setNameboardHeight);
 
-function exitFullScreen() {
-  if (document.exitFullscreen) document.exitFullscreen();
-  else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-  else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-  else if (document.msExitFullscreen) document.msExitFullscreen();
-}
-function handleFullscreenChange() {
-  var exitBtn = document.getElementById('exitFullscreenBtn');
-  if (exitBtn) {
-    if (
-      document.fullscreenElement ||
-      document.webkitFullscreenElement ||
-      document.mozFullScreenElement ||
-      document.msFullscreenElement
-    ) {
-      exitBtn.style.display = 'block';
-    } else {
-      exitBtn.style.display = 'none';
-    }
+  displayName.textContent = name;
+  // Only display the flight detail if provided
+  displayFlight.textContent = flight ? flight : "";
+
+  logoBackground.style.backgroundImage = `url('Images/${logo}')`;
+  logoBackground.style.backgroundSize = "contain";
+  logoBackground.style.backgroundRepeat = "no-repeat";
+  logoBackground.style.backgroundPosition = "center";
+
+  formContainer.classList.add("hidden");
+  nameboard.classList.remove("hidden");
+
+  lastName = name;
+  lastFlight = flight;
+  lastLogo = logo;
+
+  // Show confirmation message
+  displayMessage.textContent = "Nameboard displayed successfully!";
+  displayMessage.className = "success";
+});
+
+backBtn.addEventListener("click", function () {
+  nameboard.classList.add("hidden");
+  formContainer.classList.remove("hidden");
+  nameInput.value = lastName;
+  flightInput.value = lastFlight;
+  logoSelect.value = lastLogo;
+  formMessages.textContent = "";
+});const nameInput = document.getElementById("nameInput");
+const flightInput = document.getElementById("flightInput");
+const logoSelect = document.getElementById("logoSelect");
+const showBtn = document.getElementById("showBtn");
+const nameboard = document.getElementById("nameboard");
+const displayName = document.getElementById("displayName");
+const displayFlight = document.getElementById("displayFlight");
+const logoBackground = document.getElementById("logoBackground");
+const backBtn = document.getElementById("backBtn");
+const formContainer = document.querySelector(".form-container");
+const formMessages = document.getElementById("form-messages");
+const displayMessage = document.getElementById("displayMessage");
+
+logoSelect.value = "marquee_logo.png";
+
+let lastName = "";
+let lastFlight = "";
+let lastLogo = "marquee_logo.png";
+
+showBtn.addEventListener("click", function () {
+  formMessages.textContent = ""; // Clear previous messages
+  displayMessage.textContent = ""; // Clear previous display messages
+  const name = nameInput.value.trim();
+  const flight = flightInput.value.trim();
+  const logo = logoSelect.value;
+
+  // Validation with user feedback
+  if (!name) {
+    formMessages.textContent = "Please enter a Name.";
+    formMessages.className = "error";
+    return;
   }
-}
 
-document.addEventListener('DOMContentLoaded', function() {
-  var showBtn = document.getElementById('showNameboardBtn');
-  var exitBtn = document.getElementById('exitFullscreenBtn');
-  var form = document.getElementById('input-form');
-  var nameboard = document.getElementById('nameboard-container');
-  var nameInput = document.getElementById('nameInput');
-  var infoInput = document.getElementById('infoInput');
-  var nameDisplay = document.getElementById('nameDisplay');
-  var infoDisplay = document.getElementById('infoDisplay');
-  var logoSelect = document.getElementById('logoSelect');
+  displayName.textContent = name;
+  // Only display the flight detail if provided
+  displayFlight.textContent = flight ? flight : "";
 
-  setNameboardHeight(); // set initial height
+  logoBackground.style.backgroundImage = `url('Images/${logo}')`;
+  logoBackground.style.backgroundSize = "contain";
+  logoBackground.style.backgroundRepeat = "no-repeat";
+  logoBackground.style.backgroundPosition = "center";
 
-  showBtn.addEventListener('click', function () {
-    nameDisplay.textContent = nameInput.value;
-    infoDisplay.textContent = infoInput.value;
-    var selectedLogo = logoSelect.value;
+  formContainer.classList.add("hidden");
+  nameboard.classList.remove("hidden");
 
-    // Set background image
-    if (selectedLogo !== "none") {
-      nameboard.style.backgroundImage = 'url(' + selectedLogo + ')';
-      nameboard.style.backgroundSize = 'cover';
-      nameboard.style.backgroundPosition = 'center';
-      nameboard.style.backgroundRepeat = 'no-repeat';
-    } else {
-      nameboard.style.backgroundImage = '';
-      nameboard.style.backgroundColor = '#fff';
-    }
+  lastName = name;
+  lastFlight = flight;
+  lastLogo = logo;
 
-    // Set text color based on background logo
-    let blackLogos = [
-      "Images/marquee_logo.png",
-      "Images/blacklane_logo.png",
-      "Images/royale_logo.png",
-      "Images/dakota_logo.png",
-      "Images/black_blank_logo.png"
-    ];
-    let whiteLogos = [
-      "Images/firstlight_logo.png",
-      "Images/tbr_logo.png",
-      "Images/viator_logo.png",
-      "Images/white_blank_logo.png"
-    ];
-    if (blackLogos.includes(selectedLogo)) {
-      nameDisplay.style.color = "#fff";
-      infoDisplay.style.color = "#fff";
-    } else if (whiteLogos.includes(selectedLogo)) {
-      nameDisplay.style.color = "#000";
-      infoDisplay.style.color = "#000";
-    } else {
-      nameDisplay.style.color = "#000";
-      infoDisplay.style.color = "#000";
-    }
+  // Show confirmation message
+  displayMessage.textContent = "Nameboard displayed successfully!";
+  displayMessage.className = "success";
+});
 
-    // Hide form, show nameboard
-    form.style.display = 'none';
-    nameboard.style.display = 'flex';
-    setNameboardHeight();
-    goFullScreen();
-  });
-
-  exitBtn.addEventListener('click', function () {
-    exitFullScreen();
-  });
-
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
-  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
-
-  // Clicking nameboard returns to form if not in fullscreen
-  nameboard.addEventListener('click', function () {
-    if (
-      !document.fullscreenElement &&
-      !document.webkitFullscreenElement &&
-      !document.mozFullScreenElement &&
-      !document.msFullscreenElement
-    ) {
-      nameboard.style.display = 'none';
-      form.style.display = 'block';
-      nameboard.style.backgroundImage = '';
-      nameboard.style.backgroundColor = '#fff';
-      nameDisplay.style.color = "#000";
-      infoDisplay.style.color = "#000";
-      setNameboardHeight();
-    }
-  });
+backBtn.addEventListener("click", function () {
+  nameboard.classList.add("hidden");
+  formContainer.classList.remove("hidden");
+  nameInput.value = lastName;
+  flightInput.value = lastFlight;
+  logoSelect.value = lastLogo;
+  formMessages.textContent = "";
 });
