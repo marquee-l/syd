@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nameboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <form id="input-form">
-    <input id="nameInput" type="text" placeholder="Enter Name" required>
-    <input id="infoInput" type="text" placeholder="Flight Info" required>
+  <div class="form-container">
+    <div id="form-messages"></div>
+    <input type="text" id="nameInput" placeholder="Enter Name" />
+    <input type="text" id="flightInput" placeholder="Enter Flight (optional)" />
     <select id="logoSelect">
-      <option value="none">No Logo/Background</option>
-      <option value="Images/marquee_logo.png">Marquee Logo</option>
-      <option value="Images/blacklane_logo.png">Blacklane Logo</option>
-      <option value="Images/tbr_logo.png">TBR Logo</option>
-      <option value="Images/royale_logo.png">Royale Logo</option>
-      <option value="Images/dakota_logo.png">Dakota Logo</option>
-      <option value="Images/firstlight_logo.png">Firstlight Logo</option>
-      <option value="Images/viator_logo.png">Viator Logo</option>
-      <option value="Images/black_blank_logo.png">Black Blank Logo</option>
-      <option value="Images/white_blank_logo.png">White Blank Logo</option>
+      <option value="marquee_logo.png">Marquee Logo</option>
+      <option value="blacklane_logo.png">Blacklane Logo</option>
     </select>
-    <button id="showNameboardBtn" type="button">Show Nameboard</button>
-  </form>
-  <div id="nameboard-container" style="display:none;">
-    <div class="nameboard-content">
-      <div class="nameboard-text" id="nameDisplay"></div>
-      <div class="nameboard-info" id="infoDisplay"></div>
-    </div>
+    <button id="showBtn">Show Nameboard</button>
   </div>
-  <button id="exitFullscreenBtn">Exit Fullscreen</button>
+  <div id="nameboard" class="hidden">
+    <div id="logoBackground"></div>
+    <div id="details">
+      <span id="displayName"></span>
+      <span id="displayFlight"></span>
+    </div>
+    <div id="displayMessage"></div>
+    <button id="backBtn">Back</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
