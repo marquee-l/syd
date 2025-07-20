@@ -37,7 +37,7 @@ showBtn.addEventListener("click", function () {
   nameboard.style.display = "flex";
   formContainer.style.display = "none";
 
-  // Go fullscreen!
+  // Fullscreen
   if (nameboard.requestFullscreen) {
     nameboard.requestFullscreen();
   } else if (nameboard.webkitRequestFullscreen) { /* Safari */
