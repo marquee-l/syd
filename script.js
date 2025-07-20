@@ -8,16 +8,31 @@ const nameboard = document.getElementById("nameboard");
 const displayName = document.getElementById("displayName");
 const displayFlight = document.getElementById("displayFlight");
 const backBtn = document.getElementById("backBtn");
-const overlay = document.getElementById("overlay");
+const logoTitle = document.getElementById("logoTitle");
 
-// List of logos that need a "light" overlay (text should be black)
+// For overlay/text contrast, you can adjust this array as needed
 const lightLogos = [
   "white_blank_logo.png",
-  "viator_logo.png", // Add any other logos that are mostly white/bright
+  "viator_logo.png",
   "firstlight_logo.png"
 ];
 
-// Set default logo
+// Helper: get logo display name from value
+function getLogoDisplayName(filename) {
+  const map = {
+    "marquee_logo.png": "MARQUEE",
+    "blacklane_logo.png": "BLACKLANE",
+    "dakota_logo.png": "DAKOTA",
+    "firstlight_logo.png": "FIRSTLIGHT",
+    "royale_logo.png": "ROYALE",
+    "tbr_logo.png": "TBR",
+    "viator_logo.png": "VIATOR",
+    "white_blank_logo.png": "",
+    "black_blank_logo.png": ""
+  };
+  return map[filename] || "";
+}
+
 logoSelect.value = "marquee_logo.png";
 
 showBtn.addEventListener("click", function () {
@@ -33,20 +48,17 @@ showBtn.addEventListener("click", function () {
     return;
   }
 
-  displayName.textContent = name;
-  displayFlight.textContent = flight ? "Flight: " + flight : "";
+  // Set the title (logo brand) at the top
+  logoTitle.textContent = getLogoDisplayName(logo);
 
-  // Set nameboard background image
+  // Set name and flight
+  displayName.textContent = name;
+  displayFlight.textContent = flight ? `Flight: ${flight}` : "";
+
+  // Set background image for the nameboard
   nameboard.style.backgroundImage = `url("Images/${logo}")`;
   nameboard.style.display = "flex";
   formContainer.style.display = "none";
-
-  // Set overlay and text color for contrast
-  if (lightLogos.includes(logo)) {
-    overlay.classList.add("light-bg");
-  } else {
-    overlay.classList.remove("light-bg");
-  }
 });
 
 backBtn.addEventListener("click", function () {
