@@ -54,50 +54,40 @@ button:not(#backBtn):hover {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-}
-
-#brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 3vh;
+  overflow: hidden;
 }
 
 #brandLogo {
-  max-width: 250px;
-  max-height: 120px;
-  width: auto;
+  display: block;
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  max-width: 30vw;
+  max-height: 16vh;
   height: auto;
-  margin-bottom: 0.5vh;
+  width: auto;
 }
 
-#brandName {
+/* Large, non-bold, white name */
+#displayName {
+  margin-top: 4vh;
+  font-size: 7vw;
+  font-weight: normal;
   color: #fff;
-  font-size: 2.8vw;
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  margin-top: 0.5vh;
   text-align: center;
   text-shadow: 2px 2px 8px #000;
-}
-
-/* Name & Flight Info */
-#displayName {
-  margin-top: 6vh;
-  font-size: 7vw;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  text-shadow: 2px 2px 10px #000;
   line-height: 1.1;
+  letter-spacing: 0.03em;
 }
 
+/* Large white flight info, no prefix */
 #displayFlight {
   font-size: 3vw;
+  font-weight: normal;
   color: #fff;
   text-align: center;
-  text-shadow: 1px 1px 10px #000;
-  margin: 2vh 0 0 0;
+  text-shadow: 1px 1px 8px #000;
+  margin: 3vh 0 0 0;
+  letter-spacing: 0.02em;
 }
 
 /* Discrete bottom-right back button */
@@ -108,7 +98,7 @@ button:not(#backBtn):hover {
   background: rgba(0,0,0,0.2);
   color: #fff;
   border: none;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 0.5em 1.5em;
   border-radius: 20px;
   cursor: pointer;
@@ -127,8 +117,8 @@ button:not(#backBtn):hover {
 }
 
 @media (max-width: 600px) {
-  #brandName { font-size: 5vw; }
+  #brandLogo { max-width: 60vw; max-height: 10vh; }
   #displayName { font-size: 13vw; }
-  #displayFlight { font-size: 6vw; }
+  #displayFlight { font-size: 7vw; }
   #backBtn { font-size: 3vw; padding: 1vw 3vw;}
 }
