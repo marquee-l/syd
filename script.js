@@ -9,20 +9,6 @@ const displayName = document.getElementById("displayName");
 const displayFlight = document.getElementById("displayFlight");
 const backBtn = document.getElementById("backBtn");
 const brandLogo = document.getElementById("brandLogo");
-const brandName = document.getElementById("brandName");
-
-// Map logo filenames to display name
-const logoMap = {
-  "marquee_logo.png": "Marquee Limousines",
-  "blacklane_logo.png": "Blacklane",
-  "dakota_logo.png": "Dakota",
-  "firstlight_logo.png": "Firstlight",
-  "royale_logo.png": "Royale",
-  "tbr_logo.png": "TBR",
-  "viator_logo.png": "Viator",
-  "white_blank_logo.png": "",
-  "black_blank_logo.png": ""
-};
 
 logoSelect.value = "marquee_logo.png";
 
@@ -39,15 +25,14 @@ showBtn.addEventListener("click", function () {
     return;
   }
 
-  // Set logo image and name
+  // Set logo image
   brandLogo.src = "Images/" + logo;
-  brandLogo.style.display = logoMap[logo] ? "block" : "none";
-  brandLogo.alt = logoMap[logo];
-  brandName.textContent = logoMap[logo];
-
-  // Set name and flight
+  // If you want to hide the logo for blank, uncomment the line below:
+  // brandLogo.style.display = (logo === "white_blank_logo.png" || logo === "black_blank_logo.png") ? "none" : "block";
+  
+  // Set name and flight (no prefix)
   displayName.textContent = name;
-  displayFlight.textContent = flight ? `Flight: ${flight}` : "";
+  displayFlight.textContent = flight;
 
   // Show board
   nameboard.style.display = "flex";
@@ -58,7 +43,6 @@ backBtn.addEventListener("click", function () {
   nameboard.style.display = "none";
   formContainer.style.display = "block";
   brandLogo.src = "";
-  brandName.textContent = "";
   displayName.textContent = "";
   displayFlight.textContent = "";
 });
