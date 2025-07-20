@@ -27,9 +27,8 @@ showBtn.addEventListener("click", function () {
 
   // Set logo image
   brandLogo.src = "Images/" + logo;
-  // If you want to hide the logo for blank, uncomment the line below:
-  // brandLogo.style.display = (logo === "white_blank_logo.png" || logo === "black_blank_logo.png") ? "none" : "block";
-  
+  brandLogo.style.display = "block";
+
   // Set name and flight (no prefix)
   displayName.textContent = name;
   displayFlight.textContent = flight;
@@ -37,6 +36,15 @@ showBtn.addEventListener("click", function () {
   // Show board
   nameboard.style.display = "flex";
   formContainer.style.display = "none";
+
+  // Go fullscreen!
+  if (nameboard.requestFullscreen) {
+    nameboard.requestFullscreen();
+  } else if (nameboard.webkitRequestFullscreen) { /* Safari */
+    nameboard.webkitRequestFullscreen();
+  } else if (nameboard.msRequestFullscreen) { /* IE11 */
+    nameboard.msRequestFullscreen();
+  }
 });
 
 backBtn.addEventListener("click", function () {
@@ -45,4 +53,15 @@ backBtn.addEventListener("click", function () {
   brandLogo.src = "";
   displayName.textContent = "";
   displayFlight.textContent = "";
+
+  // Exit fullscreen if active
+  if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen();
+    }
+  }
 });
