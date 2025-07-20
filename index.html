@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nameboard</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <title>Nameboard App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="form-container">
-    <div id="form-messages"></div>
     <input type="text" id="nameInput" placeholder="Enter Name" />
     <input type="text" id="flightInput" placeholder="Enter Flight (optional)" />
     <select id="logoSelect">
-      <option value="marquee_logo.png">Marquee Logo</option>
-      <option value="blacklane_logo.png">Blacklane Logo</option>
+      <option value="marquee_logo.png">Marquee</option>
+      <option value="blacklane_logo.png">Blacklane</option>
+      <option value="dakota_logo.png">Dakota</option>
+      <option value="firstlight_logo.png">Firstlight</option>
+      <option value="royale_logo.png">Royale</option>
+      <option value="tbr_logo.png">TBR</option>
+      <option value="viator_logo.png">Viator</option>
+      <option value="white_blank_logo.png">White Blank</option>
+      <option value="black_blank_logo.png">Black Blank</option>
     </select>
     <button id="showBtn">Show Nameboard</button>
+    <div id="form-messages"></div>
   </div>
-  <div id="nameboard" class="hidden">
-    <div id="logoBackground"></div>
-    <div id="details">
-      <span id="displayName"></span>
-      <span id="displayFlight"></span>
-    </div>
-    <div id="displayMessage"></div>
+
+  <div id="nameboard" style="display:none;">
+    <img id="logoBackground" src="" alt="Logo" />
+    <div id="displayName"></div>
+    <div id="displayFlight"></div>
     <button id="backBtn">Back</button>
+    <div id="displayMessage"></div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
