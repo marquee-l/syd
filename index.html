@@ -10,7 +10,7 @@
     <input type="text" id="nameInput" placeholder="Enter Name" />
     <input type="text" id="flightInput" placeholder="Enter Flight (optional)" />
     <select id="logoSelect">
-      <option value="marquee_logo.png">Marquee</option>
+      <option value="marquee_logo.png">Marquee Limousines</option>
       <option value="blacklane_logo.png">Blacklane</option>
       <option value="dakota_logo.png">Dakota</option>
       <option value="firstlight_logo.png">Firstlight</option>
@@ -25,10 +25,13 @@
   </div>
 
   <div id="nameboard" style="display:none;">
-    <div id="logoTitle"></div>
+    <div id="brand">
+      <img id="brandLogo" src="" alt="" />
+      <span id="brandName"></span>
+    </div>
     <div id="displayName"></div>
     <div id="displayFlight"></div>
-    <button id="backBtn" title="Exit Fullscreen">&#10006;</button>
+    <button id="backBtn" title="Back">Back</button>
   </div>
 
   <script src="script.js"></script>
