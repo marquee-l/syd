@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #f8f9fa;
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body {
   text-align: center;
 }
 
-input, select, button {
+input, select, button:not(#backBtn) {
   display: block;
   width: 90%;
   margin: 15px auto;
@@ -25,7 +25,7 @@ input, select, button {
   border-radius: 5px;
 }
 
-button {
+button:not(#backBtn) {
   background: #007bff;
   color: #fff;
   border: none;
@@ -33,7 +33,7 @@ button {
   transition: background 0.2s;
 }
 
-button:hover {
+button:not(#backBtn):hover {
   background: #0056b3;
 }
 
@@ -42,64 +42,93 @@ button:hover {
   margin-top: 10px;
 }
 
-/* Nameboard fullscreen background */
+/* Nameboard fullscreen styles */
 #nameboard {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: #000;
+  background: #000;
   z-index: 1000;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* Overlay for text and button, default dark */
-#nameboard .overlay {
-  background: rgba(0,0,0,0.45);
-  border-radius: 20px;
-  padding: 40px 60px;
-  text-align: center;
-  min-width: 320px;
-  max-width: 80vw;
-  transition: background 0.3s;
+#brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
 }
 
-/* Overlay for light logos */
-#nameboard .overlay.light-bg {
-  background: rgba(255,255,255,0.6);
+#brandLogo {
+  max-width: 250px;
+  max-height: 120px;
+  width: auto;
+  height: auto;
+  margin-bottom: 0.5vh;
 }
 
-/* Text styling: default white */
-#displayName, #displayFlight {
+#brandName {
   color: #fff;
+  font-size: 2.8vw;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  margin-top: 0.5vh;
+  text-align: center;
   text-shadow: 2px 2px 8px #000;
-  margin: 0 0 25px 0;
-  transition: color 0.3s, text-shadow 0.3s;
 }
+
+/* Name & Flight Info */
 #displayName {
-  font-size: 2.5em;
-  font-weight: bold;
+  margin-top: 6vh;
+  font-size: 7vw;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 10px #000;
+  line-height: 1.1;
 }
+
 #displayFlight {
-  font-size: 1.4em;
+  font-size: 3vw;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 10px #000;
+  margin: 2vh 0 0 0;
 }
 
-/* Text for light background: black */
-#nameboard .overlay.light-bg #displayName,
-#nameboard .overlay.light-bg #displayFlight {
-  color: #111;
-  text-shadow: 2px 2px 8px #fff;
-}
-
-/* Back button style */
+/* Discrete bottom-right back button */
 #backBtn {
+  position: fixed;
+  right: 2vw;
+  bottom: 2vh;
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+  border: none;
   font-size: 1.2em;
-  padding: 12px 40px;
-  margin-top: 10px;
-  border-radius: 8px;
+  padding: 0.5em 1.5em;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 2000;
+  opacity: 0.65;
+  transition: opacity 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+#backBtn:hover {
+  opacity: 1;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  #brandName { font-size: 5vw; }
+  #displayName { font-size: 13vw; }
+  #displayFlight { font-size: 6vw; }
+  #backBtn { font-size: 3vw; padding: 1vw 3vw;}
 }
