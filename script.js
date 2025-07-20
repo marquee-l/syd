@@ -1,4 +1,3 @@
-// Get elements
 const nameInput = document.getElementById("nameInput");
 const flightInput = document.getElementById("flightInput");
 const logoSelect = document.getElementById("logoSelect");
@@ -8,17 +7,21 @@ const formMessages = document.getElementById("form-messages");
 const nameboard = document.getElementById("nameboard");
 const displayName = document.getElementById("displayName");
 const displayFlight = document.getElementById("displayFlight");
-const logoBackground = document.getElementById("logoBackground");
 const backBtn = document.getElementById("backBtn");
-const displayMessage = document.getElementById("displayMessage");
+const overlay = document.getElementById("overlay");
+
+// List of logos that need a "light" overlay (text should be black)
+const lightLogos = [
+  "white_blank_logo.png",
+  "viator_logo.png", // Add any other logos that are mostly white/bright
+  "firstlight_logo.png"
+];
 
 // Set default logo
 logoSelect.value = "marquee_logo.png";
 
-// Show Nameboard button event
 showBtn.addEventListener("click", function () {
   formMessages.textContent = "";
-  displayMessage.textContent = "";
 
   const name = nameInput.value.trim();
   const flight = flightInput.value.trim();
@@ -32,15 +35,22 @@ showBtn.addEventListener("click", function () {
 
   displayName.textContent = name;
   displayFlight.textContent = flight ? "Flight: " + flight : "";
-  logoBackground.src = "Images/" + logo;
-  logoBackground.alt = logo.replace("_logo.png", "").replace("_blank", " Blank");
 
+  // Set nameboard background image
+  nameboard.style.backgroundImage = `url("Images/${logo}")`;
+  nameboard.style.display = "flex";
   formContainer.style.display = "none";
-  nameboard.style.display = "block";
+
+  // Set overlay and text color for contrast
+  if (lightLogos.includes(logo)) {
+    overlay.classList.add("light-bg");
+  } else {
+    overlay.classList.remove("light-bg");
+  }
 });
 
-// Back button event
 backBtn.addEventListener("click", function () {
   nameboard.style.display = "none";
   formContainer.style.display = "block";
+  nameboard.style.backgroundImage = "";
 });
