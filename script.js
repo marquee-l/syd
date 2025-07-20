@@ -1,30 +1,29 @@
+// Get elements
 const nameInput = document.getElementById("nameInput");
 const flightInput = document.getElementById("flightInput");
 const logoSelect = document.getElementById("logoSelect");
 const showBtn = document.getElementById("showBtn");
+const formContainer = document.querySelector(".form-container");
+const formMessages = document.getElementById("form-messages");
 const nameboard = document.getElementById("nameboard");
 const displayName = document.getElementById("displayName");
 const displayFlight = document.getElementById("displayFlight");
 const logoBackground = document.getElementById("logoBackground");
 const backBtn = document.getElementById("backBtn");
-const formContainer = document.querySelector(".form-container");
-const formMessages = document.getElementById("form-messages");
 const displayMessage = document.getElementById("displayMessage");
 
+// Set default logo
 logoSelect.value = "marquee_logo.png";
 
-let lastName = "";
-let lastFlight = "";
-let lastLogo = "marquee_logo.png";
-
+// Show Nameboard button event
 showBtn.addEventListener("click", function () {
-  formMessages.textContent = ""; // Clear previous messages
-  displayMessage.textContent = ""; // Clear previous display messages
+  formMessages.textContent = "";
+  displayMessage.textContent = "";
+
   const name = nameInput.value.trim();
   const flight = flightInput.value.trim();
   const logo = logoSelect.value;
 
-  // Validation with user feedback
   if (!name) {
     formMessages.textContent = "Please enter a Name.";
     formMessages.className = "error";
@@ -32,92 +31,16 @@ showBtn.addEventListener("click", function () {
   }
 
   displayName.textContent = name;
-  // Only display the flight detail if provided
-  displayFlight.textContent = flight ? flight : "";
+  displayFlight.textContent = flight ? "Flight: " + flight : "";
+  logoBackground.src = "Images/" + logo;
+  logoBackground.alt = logo.replace("_logo.png", "").replace("_blank", " Blank");
 
-  logoBackground.style.backgroundImage = `url('Images/${logo}')`;
-  logoBackground.style.backgroundSize = "contain";
-  logoBackground.style.backgroundRepeat = "no-repeat";
-  logoBackground.style.backgroundPosition = "center";
-
-  formContainer.classList.add("hidden");
-  nameboard.classList.remove("hidden");
-
-  lastName = name;
-  lastFlight = flight;
-  lastLogo = logo;
-
-  // Show confirmation message
-  displayMessage.textContent = "Nameboard displayed successfully!";
-  displayMessage.className = "success";
+  formContainer.style.display = "none";
+  nameboard.style.display = "block";
 });
 
+// Back button event
 backBtn.addEventListener("click", function () {
-  nameboard.classList.add("hidden");
-  formContainer.classList.remove("hidden");
-  nameInput.value = lastName;
-  flightInput.value = lastFlight;
-  logoSelect.value = lastLogo;
-  formMessages.textContent = "";
-});const nameInput = document.getElementById("nameInput");
-const flightInput = document.getElementById("flightInput");
-const logoSelect = document.getElementById("logoSelect");
-const showBtn = document.getElementById("showBtn");
-const nameboard = document.getElementById("nameboard");
-const displayName = document.getElementById("displayName");
-const displayFlight = document.getElementById("displayFlight");
-const logoBackground = document.getElementById("logoBackground");
-const backBtn = document.getElementById("backBtn");
-const formContainer = document.querySelector(".form-container");
-const formMessages = document.getElementById("form-messages");
-const displayMessage = document.getElementById("displayMessage");
-
-logoSelect.value = "marquee_logo.png";
-
-let lastName = "";
-let lastFlight = "";
-let lastLogo = "marquee_logo.png";
-
-showBtn.addEventListener("click", function () {
-  formMessages.textContent = ""; // Clear previous messages
-  displayMessage.textContent = ""; // Clear previous display messages
-  const name = nameInput.value.trim();
-  const flight = flightInput.value.trim();
-  const logo = logoSelect.value;
-
-  // Validation with user feedback
-  if (!name) {
-    formMessages.textContent = "Please enter a Name.";
-    formMessages.className = "error";
-    return;
-  }
-
-  displayName.textContent = name;
-  // Only display the flight detail if provided
-  displayFlight.textContent = flight ? flight : "";
-
-  logoBackground.style.backgroundImage = `url('Images/${logo}')`;
-  logoBackground.style.backgroundSize = "contain";
-  logoBackground.style.backgroundRepeat = "no-repeat";
-  logoBackground.style.backgroundPosition = "center";
-
-  formContainer.classList.add("hidden");
-  nameboard.classList.remove("hidden");
-
-  lastName = name;
-  lastFlight = flight;
-  lastLogo = logo;
-
-  // Show confirmation message
-  displayMessage.textContent = "Nameboard displayed successfully!";
-  displayMessage.className = "success";
-});
-
-backBtn.addEventListener("click", function () {
-  nameboard.classList.add("hidden");
-  formContainer.classList.remove("hidden");
-  nameInput.value = lastName;
-  flightInput.value = lastFlight;
-  logoSelect.value = lastLogo;
-  formMessages.textContent = "";
+  nameboard.style.display = "none";
+  formContainer.style.display = "block";
 });
