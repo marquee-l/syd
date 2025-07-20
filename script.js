@@ -35,7 +35,7 @@ showBtn.addEventListener("click", function () {
   }
 
   // Set logo image
-  brandLogo.src = "Images/" + logo;
+  brandLogo.src = logo; // Logo files must be in the same folder as index.html
   brandLogo.style.display = "block";
 
   // Set name and flight (no prefix)
