@@ -48,13 +48,14 @@ button:not(#backBtn):hover {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: #000;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
+  background: #000; /* Default, toggled by JS for white-bg */
+  transition: background 0.2s;
 }
 
 /* Large, centered logo at the top */
@@ -65,6 +66,8 @@ button:not(#backBtn):hover {
   max-height: 30vh;
   height: auto;
   width: auto;
+  background: transparent;
+  object-fit: contain;
 }
 
 /* Center the content vertically and horizontally */
@@ -78,29 +81,38 @@ button:not(#backBtn):hover {
   margin-top: 2vh;
 }
 
-/* Very large, non-bold, white name */
-#displayName {
-  font-size: 12vw;
-  font-weight: normal;
+/* Default: white text for dark bg */
+#displayName, #displayFlight {
   color: #fff;
   text-align: center;
   text-shadow: 2px 2px 8px #000;
+  font-weight: normal;
+}
+
+#displayName {
+  font-size: 12vw;
   line-height: 1.1;
   letter-spacing: 0.03em;
 }
 
-/* Large white flight info, no prefix */
 #displayFlight {
   font-size: 4vw;
-  font-weight: normal;
-  color: #fff;
-  text-align: center;
-  text-shadow: 1px 1px 8px #000;
-  margin: 3vh 0 0 0;
+  margin-top: 3vh;
   letter-spacing: 0.02em;
 }
 
-/* Discrete bottom-right back button */
+/* White background mode */
+#nameboard.white-bg {
+  background: #fff !important;
+}
+
+#nameboard.white-bg #displayName,
+#nameboard.white-bg #displayFlight {
+  color: #000;
+  text-shadow: none;
+}
+
+/* Discrete bottom-right back button, color adapts */
 #backBtn {
   position: fixed;
   right: 2vw;
@@ -114,7 +126,7 @@ button:not(#backBtn):hover {
   cursor: pointer;
   z-index: 2000;
   opacity: 0.65;
-  transition: opacity 0.2s, background 0.2s;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   letter-spacing: 0.04em;
   font-weight: 500;
@@ -124,6 +136,16 @@ button:not(#backBtn):hover {
   opacity: 1;
   background: rgba(0,0,0,0.6);
   color: #fff;
+}
+
+#nameboard.white-bg #backBtn {
+  background: rgba(0,0,0,0.08);
+  color: #111;
+}
+
+#nameboard.white-bg #backBtn:hover {
+  color: #000;
+  background: rgba(0,0,0,0.13);
 }
 
 @media (max-width: 600px) {
