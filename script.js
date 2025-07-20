@@ -10,6 +10,15 @@ const displayFlight = document.getElementById("displayFlight");
 const backBtn = document.getElementById("backBtn");
 const brandLogo = document.getElementById("brandLogo");
 
+// List of logos which should use a white background and black text
+const whiteBgLogos = [
+  "tbr_logo.png",
+  "white_blank_logo.png",
+  "viator_logo.png",
+  "firstlight_logo.png"
+  // Add more white-background logos here as you add them!
+];
+
 logoSelect.value = "marquee_logo.png";
 
 showBtn.addEventListener("click", function () {
@@ -33,6 +42,13 @@ showBtn.addEventListener("click", function () {
   displayName.textContent = name;
   displayFlight.textContent = flight;
 
+  // Switch to white or black background mode
+  if (whiteBgLogos.includes(logo)) {
+    nameboard.classList.add("white-bg");
+  } else {
+    nameboard.classList.remove("white-bg");
+  }
+
   // Show board
   nameboard.style.display = "flex";
   formContainer.style.display = "none";
@@ -44,6 +60,13 @@ showBtn.addEventListener("click", function () {
     nameboard.webkitRequestFullscreen();
   } else if (nameboard.msRequestFullscreen) { /* IE11 */
     nameboard.msRequestFullscreen();
+  }
+});
+
+// Listen for accidental ESC or fullscreen exit
+document.addEventListener('fullscreenchange', function() {
+  if (!document.fullscreenElement && nameboard.style.display === "flex") {
+    backBtn.click();
   }
 });
 
