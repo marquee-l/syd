@@ -57,29 +57,29 @@ button:not(#backBtn):hover {
   transition: background 0.2s;
 }
 
-/* Large, centered logo at the top -- now larger as per Github37 */
+/* Large, centered logo at the top -- visually dominant and centered */
 #brandLogo {
   display: block;
-  margin: 3vh auto 0 auto;
-  max-width: 70vw;
-  max-height: 32vh;
-  height: auto;
+  margin: 2vh auto 0 auto;        /* Minimal top margin */
+  max-width: 80vw;                /* Very wide */
+  max-height: 38vh;               /* Very tall */
   width: auto;
+  height: auto;
   background: transparent;
   object-fit: contain;
 }
 
-/* Center the content block in the remaining vertical space */
+/* Center the content block in the remaining vertical space BELOW THE LOGO */
 #centerContent {
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
   justify-content: center;   /* Center vertically in remaining space */
-  align-items: center;
+  align-items: center;       /* Center horizontally */
   width: 100vw;
 }
 
-/* Default: white text for dark bg */
+/* White text for dark bg, black for white bg (handled below) */
 #displayName, #displayFlight {
   color: #fff;
   text-align: center;
@@ -147,7 +147,7 @@ button:not(#backBtn):hover {
 }
 
 @media (max-width: 600px) {
-  #brandLogo { max-width: 85vw; max-height: 15vh; }
+  #brandLogo { max-width: 90vw; max-height: 18vh; }
   #displayName { font-size: 18vw; }
   #displayFlight { font-size: 8vw; }
   #backBtn { font-size: 4vw; padding: 1vw 3vw;}
