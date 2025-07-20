@@ -53,14 +53,16 @@ button:not(#backBtn):hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
 }
 
 /* Large, centered logo at the top */
 #brandLogo {
   display: block;
   margin: 5vh auto 0 auto;
-  max-width: 38vw;
-  max-height: 16vh;
+  max-width: 60vw;
+  max-height: 30vh;
   height: auto;
   width: auto;
 }
@@ -76,9 +78,9 @@ button:not(#backBtn):hover {
   margin-top: 2vh;
 }
 
-/* Large, non-bold, white name */
+/* Very large, non-bold, white name */
 #displayName {
-  font-size: 7vw;
+  font-size: 12vw;
   font-weight: normal;
   color: #fff;
   text-align: center;
@@ -89,7 +91,7 @@ button:not(#backBtn):hover {
 
 /* Large white flight info, no prefix */
 #displayFlight {
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: normal;
   color: #fff;
   text-align: center;
@@ -125,8 +127,8 @@ button:not(#backBtn):hover {
 }
 
 @media (max-width: 600px) {
-  #brandLogo { max-width: 70vw; max-height: 10vh; }
-  #displayName { font-size: 13vw; }
-  #displayFlight { font-size: 7vw; }
-  #backBtn { font-size: 3vw; padding: 1vw 3vw;}
+  #brandLogo { max-width: 85vw; max-height: 15vh; }
+  #displayName { font-size: 18vw; }
+  #displayFlight { font-size: 8vw; }
+  #backBtn { font-size: 4vw; padding: 1vw 3vw;}
 }
