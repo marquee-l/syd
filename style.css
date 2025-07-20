@@ -5,7 +5,7 @@ body {
   padding: 0;
 }
 
-.form-container, #nameboard {
+.form-container {
   max-width: 350px;
   margin: 60px auto;
   background: #fff;
@@ -37,24 +37,69 @@ button:hover {
   background: #0056b3;
 }
 
-#error, .error {
+.error {
   color: #c00;
   margin-top: 10px;
 }
 
-#logoBackground {
-  max-width: 150px;
-  margin: 20px auto 15px auto;
-  display: block;
+/* Nameboard fullscreen background */
+#nameboard {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #000;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Overlay for text and button, default dark */
+#nameboard .overlay {
+  background: rgba(0,0,0,0.45);
+  border-radius: 20px;
+  padding: 40px 60px;
+  text-align: center;
+  min-width: 320px;
+  max-width: 80vw;
+  transition: background 0.3s;
+}
+
+/* Overlay for light logos */
+#nameboard .overlay.light-bg {
+  background: rgba(255,255,255,0.6);
+}
+
+/* Text styling: default white */
+#displayName, #displayFlight {
+  color: #fff;
+  text-shadow: 2px 2px 8px #000;
+  margin: 0 0 25px 0;
+  transition: color 0.3s, text-shadow 0.3s;
+}
 #displayName {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
-  margin: 20px 0 10px 0;
+}
+#displayFlight {
+  font-size: 1.4em;
 }
 
-#displayFlight {
+/* Text for light background: black */
+#nameboard .overlay.light-bg #displayName,
+#nameboard .overlay.light-bg #displayFlight {
+  color: #111;
+  text-shadow: 2px 2px 8px #fff;
+}
+
+/* Back button style */
+#backBtn {
   font-size: 1.2em;
-  margin-bottom: 15px;
+  padding: 12px 40px;
+  margin-top: 10px;
+  border-radius: 8px;
 }
