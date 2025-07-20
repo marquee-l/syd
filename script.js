@@ -8,30 +8,21 @@ const nameboard = document.getElementById("nameboard");
 const displayName = document.getElementById("displayName");
 const displayFlight = document.getElementById("displayFlight");
 const backBtn = document.getElementById("backBtn");
-const logoTitle = document.getElementById("logoTitle");
+const brandLogo = document.getElementById("brandLogo");
+const brandName = document.getElementById("brandName");
 
-// For overlay/text contrast, you can adjust this array as needed
-const lightLogos = [
-  "white_blank_logo.png",
-  "viator_logo.png",
-  "firstlight_logo.png"
-];
-
-// Helper: get logo display name from value
-function getLogoDisplayName(filename) {
-  const map = {
-    "marquee_logo.png": "MARQUEE",
-    "blacklane_logo.png": "BLACKLANE",
-    "dakota_logo.png": "DAKOTA",
-    "firstlight_logo.png": "FIRSTLIGHT",
-    "royale_logo.png": "ROYALE",
-    "tbr_logo.png": "TBR",
-    "viator_logo.png": "VIATOR",
-    "white_blank_logo.png": "",
-    "black_blank_logo.png": ""
-  };
-  return map[filename] || "";
-}
+// Map logo filenames to display name
+const logoMap = {
+  "marquee_logo.png": "Marquee Limousines",
+  "blacklane_logo.png": "Blacklane",
+  "dakota_logo.png": "Dakota",
+  "firstlight_logo.png": "Firstlight",
+  "royale_logo.png": "Royale",
+  "tbr_logo.png": "TBR",
+  "viator_logo.png": "Viator",
+  "white_blank_logo.png": "",
+  "black_blank_logo.png": ""
+};
 
 logoSelect.value = "marquee_logo.png";
 
@@ -48,15 +39,17 @@ showBtn.addEventListener("click", function () {
     return;
   }
 
-  // Set the title (logo brand) at the top
-  logoTitle.textContent = getLogoDisplayName(logo);
+  // Set logo image and name
+  brandLogo.src = "Images/" + logo;
+  brandLogo.style.display = logoMap[logo] ? "block" : "none";
+  brandLogo.alt = logoMap[logo];
+  brandName.textContent = logoMap[logo];
 
   // Set name and flight
   displayName.textContent = name;
   displayFlight.textContent = flight ? `Flight: ${flight}` : "";
 
-  // Set background image for the nameboard
-  nameboard.style.backgroundImage = `url("Images/${logo}")`;
+  // Show board
   nameboard.style.display = "flex";
   formContainer.style.display = "none";
 });
@@ -64,5 +57,8 @@ showBtn.addEventListener("click", function () {
 backBtn.addEventListener("click", function () {
   nameboard.style.display = "none";
   formContainer.style.display = "block";
-  nameboard.style.backgroundImage = "";
+  brandLogo.src = "";
+  brandName.textContent = "";
+  displayName.textContent = "";
+  displayFlight.textContent = "";
 });
