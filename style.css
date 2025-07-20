@@ -1,121 +1,60 @@
 body {
   font-family: Arial, sans-serif;
-  background: #fff;
+  background: #f8f9fa;
   margin: 0;
   padding: 0;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  min-height: 40vh;
-  margin-top: 2rem;
+.form-container, #nameboard {
+  max-width: 350px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  padding: 2em;
+  text-align: center;
 }
 
-input, select {
-  padding: 0.7rem;
-  font-size: 1.1rem;
+input, select, button {
+  display: block;
+  width: 90%;
+  margin: 15px auto;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: 1px solid #999;
-  margin-bottom: 0.5rem;
 }
 
 button {
-  padding: 0.7rem 1.3rem;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  border: none;
-  background: #333;
+  background: #007bff;
   color: #fff;
+  border: none;
   cursor: pointer;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  transition: background 0.2s;
 }
 
 button:hover {
-  background: #555;
+  background: #0056b3;
 }
 
 #error, .error {
-  color: #d00;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.success {
-  color: #018d22;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-#nameboard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 70vh;
+  color: #c00;
+  margin-top: 10px;
 }
 
 #logoBackground {
-  width: 420px;
-  height: 120px;
-  margin-bottom: 24px;
-  border: 2px solid #eee;
-  background-color: #f7f7f7;
-}
-
-#details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  max-width: 150px;
+  margin: 20px auto 15px auto;
+  display: block;
 }
 
 #displayName {
+  font-size: 2em;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin: 20px 0 10px 0;
 }
 
 #displayFlight {
-  color: #333;
-}
-
-#displayMessage {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-}
-
-.hidden {
-  display: none;
-}
-
-#backBtn {
-  font-size: 1rem;
-  background: #666;
-  color: #fff;
-  border-radius: 6px;
-  padding: 0.5rem 1.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-#backBtn:hover {
-  background: #444;
-}
-
-@media (max-width: 600px) {
-  #logoBackground {
-    width: 95vw;
-    height: 80px;
-  }
-  #details {
-    font-size: 1.1rem;
-  }
-  .form-container {
-    flex-direction: column;
-    gap: 0.6rem;
-  }
+  font-size: 1.2em;
+  margin-bottom: 15px;
 }
