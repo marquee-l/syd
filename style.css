@@ -53,23 +53,31 @@ button:not(#backBtn):hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
 }
 
+/* Large, centered logo at the top */
 #brandLogo {
   display: block;
-  margin-top: 3vh;
-  margin-bottom: 5vh;
-  max-width: 30vw;
+  margin: 5vh auto 0 auto;
+  max-width: 38vw;
   max-height: 16vh;
   height: auto;
   width: auto;
 }
 
+/* Center the content vertically and horizontally */
+#centerContent {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin-top: 2vh;
+}
+
 /* Large, non-bold, white name */
 #displayName {
-  margin-top: 4vh;
   font-size: 7vw;
   font-weight: normal;
   color: #fff;
@@ -117,7 +125,7 @@ button:not(#backBtn):hover {
 }
 
 @media (max-width: 600px) {
-  #brandLogo { max-width: 60vw; max-height: 10vh; }
+  #brandLogo { max-width: 70vw; max-height: 10vh; }
   #displayName { font-size: 13vw; }
   #displayFlight { font-size: 7vw; }
   #backBtn { font-size: 3vw; padding: 1vw 3vw;}
