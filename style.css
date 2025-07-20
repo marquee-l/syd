@@ -26,7 +26,7 @@ input, select, button:not(#backBtn) {
 }
 
 button:not(#backBtn) {
-  background: #007bff;
+  background: #222;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -34,7 +34,7 @@ button:not(#backBtn) {
 }
 
 button:not(#backBtn):hover {
-  background: #0056b3;
+  background: #444;
 }
 
 .error {
