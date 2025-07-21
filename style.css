@@ -61,7 +61,7 @@ button:not(#backBtn):hover {
   display: block;
   margin: 0 auto 1vh auto;
   max-width: 90vw;
-  max-height: 60vh; /* Even more dominant, as requested */
+  max-height: 65vh; /* Even more dominant, as requested */
   width: auto;
   height: auto;
   background: transparent;
