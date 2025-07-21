@@ -12,14 +12,14 @@ const brandLogo = document.getElementById("brandLogo");
 
 // List of logos which should use a white background and black text
 const whiteBgLogos = [
-  "tbr_logo.png",
-  "white_blank_logo.png",
-  "viator_logo.png",
-  "firstlight_logo.png"
+  "Images/tbr_logo.png",
+  "Images/white_blank_logo.png",
+  "Images/viator_logo.png",
+  "Images/firstlight_logo.png"
   // Add more white-background logos here as you add them!
 ];
 
-logoSelect.value = "marquee_logo.png";
+logoSelect.value = "Images/marquee_logo.png";
 
 showBtn.addEventListener("click", function () {
   formMessages.textContent = "";
@@ -35,7 +35,7 @@ showBtn.addEventListener("click", function () {
   }
 
   // Set logo image
-  brandLogo.src = logo; // Logo files must be in the same folder as index.html
+  brandLogo.src = logo; // Logo files must be in the Images/ folder
   brandLogo.style.display = "block";
 
   // Set name and flight (no prefix)
