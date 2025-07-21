@@ -42,7 +42,6 @@ button:not(#backBtn):hover {
   margin-top: 10px;
 }
 
-/* Nameboard fullscreen styles */
 #nameboard {
   position: fixed;
   inset: 0;
@@ -51,38 +50,25 @@ button:not(#backBtn):hover {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   overflow: hidden;
   background: #000;
   transition: background 0.2s;
 }
 
-/* Logo area always at top, fixed height (dominant, as in Github37) */
-#logoArea {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 48vh; /* 48% of viewport, visually dominant */
-  min-height: 0;
-  margin: 0;
-  padding: 0;
-  transition: height 0.2s;
-}
-
+/* Dominant logo at the top, but only as large as needed */
 #brandLogo {
+  display: block;
   max-width: 90vw;
-  max-height: 44vh; /* Slightly less than container to avoid clipping */
+  max-height: 48vh;
   width: auto;
   height: auto;
   object-fit: contain;
-  display: block;
+  margin: 0 auto 0 auto;
   background: transparent;
-  margin: 0;
-  padding: 0;
 }
 
-/* CenterContent fills the rest, centers its items vertically and horizontally */
+/* CenterContent fills remaining space, centers vertically and horizontally */
 #centerContent {
   flex: 1 1 0;
   width: 100vw;
@@ -90,44 +76,35 @@ button:not(#backBtn):hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
 }
 
-/* White text for dark bg, black for white bg (handled below) */
 #displayName, #displayFlight {
   color: #fff;
   text-align: center;
   text-shadow: 2px 2px 8px #000;
   font-weight: normal;
 }
-
 #displayName {
   font-size: 10vw;
   line-height: 1.1;
   letter-spacing: 0.03em;
 }
-
 #displayFlight {
   font-size: 4vw;
   margin-top: 2vh;
   letter-spacing: 0.02em;
 }
 
-/* White background mode */
 #nameboard.white-bg {
   background: #fff !important;
 }
-
 #nameboard.white-bg #displayName,
 #nameboard.white-bg #displayFlight {
   color: #000;
   text-shadow: none;
 }
 
-/* Hide logo and center text vertically/horizontally when no-logo */
-#nameboard.no-logo #logoArea {
+#nameboard.no-logo #brandLogo {
   display: none !important;
 }
 #nameboard.no-logo #centerContent {
@@ -136,7 +113,7 @@ button:not(#backBtn):hover {
   align-items: center;
 }
 
-/* Discrete bottom-right back button, color adapts */
+/* Back button styling */
 #backBtn {
   position: fixed;
   right: 2vw;
@@ -155,25 +132,21 @@ button:not(#backBtn):hover {
   letter-spacing: 0.04em;
   font-weight: 500;
 }
-
 #backBtn:hover {
   opacity: 1;
   background: rgba(0,0,0,0.6);
   color: #fff;
 }
-
 #nameboard.white-bg #backBtn {
   background: rgba(0,0,0,0.08);
   color: #111;
 }
-
 #nameboard.white-bg #backBtn:hover {
   color: #000;
   background: rgba(0,0,0,0.13);
 }
 
 @media (max-width: 600px) {
-  #logoArea { height: 28vh; }
   #brandLogo { max-width: 98vw; max-height: 27vh; }
   #displayName { font-size: 15vw; }
   #displayFlight { font-size: 8vw; }
