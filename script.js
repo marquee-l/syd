@@ -9,6 +9,7 @@ const displayName = document.getElementById("displayName");
 const displayFlight = document.getElementById("displayFlight");
 const backBtn = document.getElementById("backBtn");
 const brandLogo = document.getElementById("brandLogo");
+const logoArea = document.getElementById("logoArea");
 
 // List of logos which should use a white background and black text
 const whiteBgLogos = [
