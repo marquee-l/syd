@@ -17,7 +17,6 @@ const whiteBgLogos = [
   "Images/firstlight_logo.png"
 ];
 
-// Set default logo
 logoSelect.value = "Images/marquee_logo.png";
 
 showBtn.addEventListener("click", function () {
@@ -44,7 +43,6 @@ showBtn.addEventListener("click", function () {
     nameboard.classList.add("no-logo");
   }
 
-  // Set name and flight (no prefix)
   displayName.textContent = name;
   displayFlight.textContent = flight;
 
@@ -55,7 +53,6 @@ showBtn.addEventListener("click", function () {
     nameboard.classList.remove("white-bg");
   }
 
-  // Show board
   nameboard.style.display = "flex";
   formContainer.style.display = "none";
 
