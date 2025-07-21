@@ -13,10 +13,8 @@ const brandLogo = document.getElementById("brandLogo");
 // List of logos which should use a white background and black text
 const whiteBgLogos = [
   "Images/tbr_logo.png",
-  "Images/white_blank_logo.png",
   "Images/viator_logo.png",
   "Images/firstlight_logo.png"
-  // Add more white-background logos here as you add them!
 ];
 
 // Set default logo
