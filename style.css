@@ -56,12 +56,12 @@ button:not(#backBtn):hover {
   transition: background 0.2s;
 }
 
-/* Very large, dominant logo at the top, matching Github37 */
+/* Large, dominant logo at the top, matching Github37 */
 #brandLogo {
   display: block;
-  margin: 0 auto 2vh auto;
+  margin: 0 auto 1vh auto;
   max-width: 90vw;
-  max-height: 50vh;
+  max-height: 55vh; /* Even more dominant, as requested */
   width: auto;
   height: auto;
   background: transparent;
@@ -73,7 +73,7 @@ button:not(#backBtn):hover {
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100vw;
 }
