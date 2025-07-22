@@ -50,25 +50,36 @@ button:not(#backBtn):hover {
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   overflow: hidden;
   background: #000;
   transition: background 0.2s;
 }
 
-/* Dominant logo at the top, but only as large as needed */
-#brandLogo {
-  display: block;
-  max-width: 90vw;
-  max-height: 48vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 0 auto;
+#logoArea {
+  width: 100vw;
+  height: 48vh;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   background: transparent;
+  padding: 0;
+  margin: 0;
 }
 
-/* CenterContent fills remaining space, centers vertically and horizontally */
+#brandLogo {
+  display: block;
+  width: 100vw;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  /* No max-height, logo fills #logoArea */
+}
+
+/* CenterContent always fills the rest and centers vertically+ horizontally */
 #centerContent {
   flex: 1 1 0;
   width: 100vw;
@@ -104,7 +115,8 @@ button:not(#backBtn):hover {
   text-shadow: none;
 }
 
-#nameboard.no-logo #brandLogo {
+/* Hide logo area and center text in full screen when no-logo */
+#nameboard.no-logo #logoArea {
   display: none !important;
 }
 #nameboard.no-logo #centerContent {
@@ -147,7 +159,8 @@ button:not(#backBtn):hover {
 }
 
 @media (max-width: 600px) {
-  #brandLogo { max-width: 98vw; max-height: 27vh; }
+  #logoArea { height: 28vh; }
+  #brandLogo { width: 100vw; height: 100%; }
   #displayName { font-size: 15vw; }
   #displayFlight { font-size: 8vw; }
   #backBtn { font-size: 4vw; padding: 1vw 3vw;}
