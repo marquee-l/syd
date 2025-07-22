@@ -56,30 +56,34 @@ button:not(#backBtn):hover {
   transition: background 0.2s;
 }
 
+/* Logo Area: flush with top, logo centered vertically in its area */
 #logoArea {
   width: 100vw;
-  height: 48vh;
+  height: 25vh;
   min-height: 0;
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  align-items: center;      /* <-- vertical centering inside area */
   background: transparent;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
+/* The logo fills the logoArea, flush top, always centered in area (object-fit: contain) */
 #brandLogo {
   display: block;
   width: 100vw;
-  height: 100%;
+  max-width: 100vw;
+  max-height: 100%;
+  height: auto;
   object-fit: contain;
   background: transparent;
   margin: 0;
   padding: 0;
-  /* No max-height, logo fills #logoArea */
 }
 
-/* CenterContent always fills the rest and centers vertically+ horizontally */
+/* Text block always fills remaining space, centered vertically+ horizontally */
 #centerContent {
   flex: 1 1 0;
   width: 100vw;
@@ -159,8 +163,8 @@ button:not(#backBtn):hover {
 }
 
 @media (max-width: 600px) {
-  #logoArea { height: 28vh; }
-  #brandLogo { width: 100vw; height: 100%; }
+  #logoArea { height: 16vh; }
+  #brandLogo { width: 100vw; max-height: 100%; }
   #displayName { font-size: 15vw; }
   #displayFlight { font-size: 8vw; }
   #backBtn { font-size: 4vw; padding: 1vw 3vw;}
