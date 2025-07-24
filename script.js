@@ -46,51 +46,5 @@ showBtn.addEventListener("click", function () {
     nameboard.classList.add("no-logo");
   }
 
-  displayName.textContent = name;
-  displayFlight.textContent = flight;
-
-  // Switch to white or black background mode
-  if (whiteBgLogos.includes(logo)) {
-    nameboard.classList.add("white-bg");
-  } else {
-    nameboard.classList.remove("white-bg");
-  }
-
-  nameboard.style.display = "flex";
-  formContainer.style.display = "none";
-
-  // Fullscreen
-  if (nameboard.requestFullscreen) {
-    nameboard.requestFullscreen();
-  } else if (nameboard.webkitRequestFullscreen) { /* Safari */
-    nameboard.webkitRequestFullscreen();
-  } else if (nameboard.msRequestFullscreen) { /* IE11 */
-    nameboard.msRequestFullscreen();
-  }
-});
-
-// Listen for accidental ESC or fullscreen exit
-document.addEventListener('fullscreenchange', function() {
-  if (!document.fullscreenElement && nameboard.style.display === "flex") {
-    backBtn.click();
-  }
-});
-
-backBtn.addEventListener("click", function () {
-  nameboard.style.display = "none";
-  formContainer.style.display = "block";
-  brandLogo.src = "";
-  displayName.textContent = "";
-  displayFlight.textContent = "";
-
-  // Exit fullscreen if active
-  if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) { /* Safari */
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { /* IE11 */
-      document.msExitFullscreen();
-    }
-  }
-});
+  displayName.textContent](#)
+
