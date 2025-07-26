@@ -14,9 +14,7 @@ const logoArea = document.getElementById("logoArea");
 // Logos which should use a white background and black text
 const whiteBgLogos = [
   "Images/tbr_logo.png",
-  "Images/viator_logo.png",
-  "Images/firstlight_logo.png",
-  "Images/rozlo_logo.png",
+  "Images/rolzo_logo.png",
   "Images/teleport_logo.png"
 ];
 
