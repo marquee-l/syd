@@ -2,22 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Logo Selector</title>
-  <style>
-    body { font-family: sans-serif; }
-    #logo-img {
-      max-width: 200px;
-      max-height: 200px;
-      display: block;
-      margin-top: 20px;
-      border: 1px solid #ddd;
-    }
-    #logo-img[hidden] { display: none; }
-    .error { color: red; }
-  </style>
+  <title>Nameboard Display</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<<<<<<< HEAD
   <div class="form-container">
     <input type="text" id="nameInput" placeholder="Enter Name" />
     <input type="text" id="flightInput" placeholder="Enter Flight (optional)" />
@@ -29,52 +17,24 @@
       <option value="Images/royale_logo.png">Royale</option>
       <option value="Images/firstlight_logo.png">Firstlight Travel</option>
       <option value="Images/viator_logo.png">Viator</option>
-      <!-- Add these two as the last options -->
       <option value="Images/rozlo_logo.png">Rozlo Logo</option>
       <option value="Images/teleport_logo.png">Teleport Logo</option>
     </select>
     <button id="showBtn">Show Nameboard</button>
     <div id="form-messages"></div>
-=======
-  <h1>Select a Logo</h1>
-  <select id="logo-select">
-    <option value="">-- Select a logo --</option>
-    <option value="rozlo_logo.png">Rozlo</option>
-    <option value="teleport_logo.png">Teleport</option>
-    <!-- Add more options as needed, and use the correct filenames -->
-  </select>
-  <div>
-    <img id="logo-img" src="" alt="Selected Logo" hidden>
-    <div id="logo-error" class="error" hidden>Logo could not be loaded.</div>
->>>>>>> origin/update/design1
   </div>
-  <script>
-    const logoSelect = document.getElementById('logo-select');
-    const logoImg = document.getElementById('logo-img');
-    const logoError = document.getElementById('logo-error');
 
-    logoSelect.addEventListener('change', function() {
-      const value = logoSelect.value;
-      if (!value) {
-        logoImg.hidden = true;
-        logoError.hidden = true;
-        logoImg.src = "";
-        return;
-      }
-      logoImg.src = "images/" + value; // Make sure the images are in the images/ folder
-      logoImg.hidden = false;
-      logoError.hidden = true;
-    });
+  <div id="nameboard" style="display:none;">
+    <div id="logoArea">
+      <img id="brandLogo" alt="Brand Logo" src="" />
+    </div>
+    <div id="centerContent">
+      <div id="displayName"></div>
+      <div id="displayFlight"></div>
+    </div>
+    <button id="backBtn" style="display:block;">Back</button>
+  </div>
 
-    logoImg.addEventListener('error', function() {
-      logoImg.hidden = true;
-      logoError.hidden = false;
-    });
-
-    logoImg.addEventListener('load', function() {
-      logoImg.hidden = false;
-      logoError.hidden = true;
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
