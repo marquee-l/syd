@@ -16,8 +16,8 @@ const whiteBgLogos = [
   "Images/tbr_logo.png",
   "Images/viator_logo.png",
   "Images/firstlight_logo.png",
-  "Images/rozlo_logo.png",      // Added
-  "Images/teleport_logo.png"    // Added
+  "Images/rozlo_logo.png",
+  "Images/teleport_logo.png"
 ];
 
 logoSelect.value = "Images/marquee_logo.png";
